@@ -21,3 +21,6 @@ jobs:
             spectool -g -R /workspace/k9s.spec
             rpmbuild -ba /workspace/k9s.spec
             ls -lR /workspace
+
+      - name: List workspace
+        run: ls -lR ${{ github.workspace }}
