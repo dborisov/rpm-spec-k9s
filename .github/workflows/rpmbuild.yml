@@ -13,6 +13,6 @@ jobs:
           image: quay.io/centos/centos:stream8
           options:
             -v ${{ github.workspace }}:/workspace
-          run:
-            yum install rpmdevtools yum-utils
+          run: |
+            yum install -y rpmdevtools yum-utils
             ls -l
