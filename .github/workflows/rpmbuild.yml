@@ -1,0 +1,18 @@
+on: push
+
+jobs:
+  rpmbuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Docker Run Action
+        uses: addnab/docker-run-action@v3
+        with:
+          image: quay.io/centos/centos:stream8
+          options:
+            -v ${{ github.workspace }}:/workspace
+          run:
+            yum install rpmdevtools yum-utils
+            ls -l
