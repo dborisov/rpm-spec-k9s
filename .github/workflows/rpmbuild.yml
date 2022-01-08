@@ -16,7 +16,7 @@ jobs:
           run: |
             yum install -y rpmdevtools yum-utils
             rpmdev-setuptree
-            yum-builddep /workspace/k9s.spec
+            yum-builddep --assumeyes /workspace/k9s.spec
             spectool -g -R /workspace/k9s.spec
             rpmbuild -ba /workspace/k9s.spec
             ls -l /workspace
