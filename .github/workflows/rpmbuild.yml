@@ -16,8 +16,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
 
@@ -41,8 +41,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/RPMS/x86_64/k9s-${{ github.ref }}.el8.x86_64.rpm
-          asset_name: k9s-${{ github.ref }}.el8.x86_64.rpm
+          asset_path: ${{ github.workspace }}/RPMS/x86_64/k9s-${{ github.ref_name }}.el8.x86_64.rpm
+          asset_name: k9s-${{ github.ref_name }}.el8.x86_64.rpm
           asset_content_type: application/octet-stream
 
       - name: Upload SRPM package
@@ -51,7 +51,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/SRPMS/k9s-${{ github.ref }}.el8.src.rpm
-          asset_name: k9s-${{ github.ref }}.el8.src.rpm
+          asset_path: ${{ github.workspace }}/SRPMS/k9s-${{ github.ref_name }}.el8.src.rpm
+          asset_name: k9s-${{ github.ref_name }}.el8.src.rpm
           asset_content_type: application/octet-stream
 
